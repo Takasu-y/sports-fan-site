@@ -4,7 +4,20 @@
 
 {% block main %}
     <div>
+        <a href="{% url 'sports:rules' %}">ルール</a>
+    </div>
+    <div>
         hello
     </div>
+
+
+    {% for sport in sports %}
+        <div>
+            <h1>{{ sport.name }}</h1>
+            <p>{{ sport.rule }}</p>
+
+        </div>
+    {% endfor %}
+
 
 {% endblock main %}
