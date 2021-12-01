@@ -1,23 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 
 {% block main %}
     <div>
-        <a href="{% url 'sports:rules' %}">ルール</a>
-    </div>
-    <div>
         hello
     </div>
 
 
-    {% for sport in sports %}
-        <div>
-            <h1>{{ sport.name }}</h1>
-            <p>{{ sport.rule }}</p>
-
-        </div>
-    {% endfor %}
-
+    <div>
+        <a href="{% url 'sports:rules' sports.id %}">ルール</a>
+        <h1>{{ sports.name }}</h1>
+        <p>{{ sports.pk }}</p>
+        <p>{{ sports.rule }}</p>
+        <img src="{{ sports.cover.url }}" alt="">
+    </div>
 
 {% endblock main %}

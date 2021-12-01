@@ -32,5 +32,9 @@ class Player(models.Model):
         return self.name
 
 class Link(models.Model):
+    title = models.CharField("タイトル", max_length=50, null=True)
     sports = models.ForeignKey(Sports, verbose_name="スポーツ", on_delete=models.CASCADE)
     link = models.URLField("関連記事", max_length=200)
+
+    def __str__(self):
+        return self.title
