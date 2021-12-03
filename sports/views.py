@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from .models import Sports, Player, Link
 import random
 
@@ -18,7 +18,7 @@ def index(request):
 
 
 def rules(request, pk):
-    sport = Sports.objects.get(pk=pk)
+    sport = get_object_or_404(Sports, pk=pk)
     context = {
         'sports': sport
     }
@@ -26,8 +26,8 @@ def rules(request, pk):
 
 
 def notables(request, pk):
-    sport = Sports.objects.get(pk=pk)
-    players = Player.objects.filter(sports__name=sport.name)
+    sport = get_object_or_404(Sports, pk=pk)
+    players = get_list_or_404(Player, sports__name=sport.name)
 
     context = {
         'sports':sport,
@@ -37,8 +37,8 @@ def notables(request, pk):
 
 
 def playerDetail(request, pk, name):
-    sport = Sports.objects.get(pk=pk)
-    player = Player.objects.get(name=name)
+    sport = get_object_or_404(Sports, pk=pk)
+    player = get_object_or_404(Player, name=name)
     print(player)
     context = {
         'sports': sport,
@@ -47,8 +47,8 @@ def playerDetail(request, pk, name):
     return render(request, "sports/detail.html", context)
 
 def links(request, pk):
-    sport = Sports.objects.get(pk=pk)
-    links = Link.objects.filter(sports__name=sport.name)
+    sport = get_object_or_404(Sports, pk=pk)
+    links = get_list_or_404(Link, sports__name=sport.name)
 
     context = {
         'sports': sport,
