@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'django_bootstrap5',
     'sports', #追加したapp名
 ]
@@ -142,6 +144,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # Upload Settings
 
@@ -152,3 +156,10 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 15728640
 
 #Heroku
 django_heroku.settings(locals())
+
+# Cloudinary
+CLOUDINARY_STORAGE  = {
+    'CLOUD_NAME':'hqmwhcjx2',
+    'API_KEY': env('CLOUDINARY_API_KEY'),
+    'API_SECRET': env('CLOUDINARY_API_SECRET')
+}
