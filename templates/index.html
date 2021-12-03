@@ -4,17 +4,11 @@
 
 
 {% block main %}
-    <div>
-        hello
-    </div>
 
+    <div class="text-center">
+        <div class="p-5"></div>
+        <h1 class="pt-5 display-4 title">Fan Website</h1>
 
-    <div>
-        <a href="{% url 'sports:rules' sports.id %}">ルール</a>
-        <h1>{{ sports.name }}</h1>
-        <p>{{ sports.pk }}</p>
-        <p>{{ sports.rule }}</p>
-        <img src="{{ sports.cover.url }}" alt="">
     </div>
 
 {% endblock main %}

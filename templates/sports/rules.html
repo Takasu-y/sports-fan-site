@@ -2,11 +2,16 @@
 
 
 {% block main %}
-    <div>
-        <a href="{% url 'sports:index' %}">Home</a>
+    <div class="pt-5">
+        <h1 class="title">Rule</h1>
+        <div class="container mt-5 px-5">
+            <div class="row">
+                <div class="col-8 mx-auto">
+                    <p class="text-start">{{ sports.rule|linebreaksbr }}</p>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div>ルールのページです。</div>
-    <h1>{{ sports }}</h1>
-    <p>{{ sports.rule }}</p>
 
 {% endblock main %}

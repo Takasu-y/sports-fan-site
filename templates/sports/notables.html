@@ -3,15 +3,21 @@
 
 
 {% block main %}
-    <div>
-        notables
-    </div>
+    <div class="pt-5">
+        <h1>選手紹介</h1>
 
+        <div class="d-md-flex justify-content-between">
+            {% for player in players %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ player.picture.url }}"  class="card-img-top" alt="{{ player.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title text-black">{{ player.name }}</h5>
+                        <a href="{% url 'sports:player_detail' sports.pk player.name %}" class="btn btn-primary">詳細</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
 
-    <div>
-
-        <h1>{{ sports.name }}</h1>
-        <p>選手紹介</p>
     </div>
 
 {% endblock main %}
